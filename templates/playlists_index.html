@@ -1,12 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Playlists</h1>
+<h1>cars</h1>
 <div class='row'>
-    {% for playlist in playlists %}
+    {% for car in cars %}
     <div class='col-md-3'>
-            <h2><a href='/playlists/{{ playlist._id }}'>{{ playlist.title }}</a></h2>
-            <small>{{ playlist.description }}</small>
+            <h2><a href='/cars/{{ car._id }}'>{{ car.title }}</a></h2>
+            <small>{{ car.Make }}</small><br>
+            <small>{{ car.Model }}</small><br>
+            <small>{{ car.Color }}</small><br>
+            <small>{{ car.Price }}</small><br>
+            <small>{{ car.Description }}</small><br>
+            <small>{{ car.Image }}</small><br>
         </div>
     {% endfor %}
 </div>

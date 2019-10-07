@@ -7,7 +7,7 @@ from bson.objectid import ObjectId
 host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/cars')
 client = MongoClient(host=f'{host}?retryWrites=false')
 db = client.get_default_database()
-playlists = db.playlists
+cars = db.cars
 comments = db.comments
 
 app = Flask(__name__)
@@ -15,12 +15,12 @@ app = Flask(__name__)
 @app.route('/')
 def playlists_index():
   """Show all cars"""
-  return render_template('playlists_index.html', playlists=playlists.find())
+  return render_template('playlists_index.html', cars=cars.find())
 
 @app.route('/playlists/new')
 def playlists_new():
   """Create Playlists"""
-  return render_template('playlists_new.html', playlist = {}, title='New Playlist')
+  return render_template('playlists_new.html', car = {}, title='New Cars')
 
 @app.route('/playlists', methods=['POST'])
 def playlists_submit():
