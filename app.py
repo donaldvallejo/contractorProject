@@ -4,10 +4,8 @@ from datetime import datetime
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/cars2')
-# client = MongoClient(host=host'?retryWrites=false')
+host = os.environ.get('MONGODB_URI', 'mongodb://localhost:27017/cars')
 client = MongoClient(host=f'{host}?retryWrites=false')
-# client = MongoClient(host=f'{host}?retryWrites=false')
 db = client.get_default_database()
 playlists = db.playlists
 comments = db.comments
@@ -16,7 +14,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def playlists_index():
-  """Show all playlist"""
+  """Show all cars"""
   return render_template('playlists_index.html', playlists=playlists.find())
 
 @app.route('/playlists/new')
@@ -38,6 +36,7 @@ def playlists_submit():
   }
 
   playlist_id = playlists.insert_one(playlist).inserted_id
+  print("Check to see if Data is even happening \n", playlist_id, playlist)
   return redirect(url_for('playlists_show', playlist_id=playlist_id))
 
 @app.route('/playlists/<playlist_id>')
