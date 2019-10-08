@@ -13,19 +13,19 @@ comments = db.comments
 app = Flask(__name__)
 
 @app.route('/')
-def playlists_index():
+def cars_index():
   """Show all cars"""
   return render_template('playlists_index.html', cars=cars.find())
 
-@app.route('/playlists/new')
-def playlists_new():
+@app.route('/cars/new')
+def cars_new():
   """Create Playlists"""
-  return render_template('playlists_new.html', car = {}, title='New Cars')
+  return render_template('cars_new.html', car = {}, title='New Cars')
 
-@app.route('/playlists', methods=['POST'])
-def playlists_submit():
+@app.route('/cars', methods=['POST'])
+def cars_submit():
   """Submit playlists to database"""
-  playlist = {
+  car = {
     'Make': request.form.get('Make'),
     'Model': request.form.get('Model'),
     'Description': request.form.get('Description'),
@@ -35,9 +35,9 @@ def playlists_submit():
     'created_at': datetime.now()
   }
 
-  playlist_id = playlists.insert_one(playlist).inserted_id
-  print("Check to see if Data is even happening \n", playlist_id, playlist)
-  return redirect(url_for('playlists_show', playlist_id=playlist_id))
+  car_id = cars.insert_one(car).inserted_id
+  print("Check to see if Data is even happening \n", car_id, car)
+  return redirect(url_for('cars_show', car_id=car_id))
 
 @app.route('/playlists/<playlist_id>')
 def playlists_show(playlist_id):
