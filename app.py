@@ -52,6 +52,24 @@ def cars_edit(car_id):
     car = cars.find_one({'_id': ObjectId(car_id)})
     return render_template('cars_edit.html', car=car, title='Edit Car')
 
+@app.route('/search', methods=['POST'])
+def search():
+  searched_cars = cars.find()
+  search = request.form.get('search')
+  search_items = []
+  for car in searched_cars:
+    if search.lower() in car['Make'].lower():
+      search_items.append(car)
+    elif search.lower() in car['Model'].lower():
+      search_items.append(car)
+    elif search.lower() in car['Color'].lower():
+      search_items.append(car)
+    elif search.lower() in car['Price'].lower():
+      search_items.append(car)
+    else:
+      print('how did you break this?')
+  return render_template('cars_index.html', cars=search_items)
+
 @app.route('/cars/<car_id>', methods=['POST'])
 def cars_update(car_id):
   """Submit an edited cars"""
