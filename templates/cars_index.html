@@ -5,13 +5,18 @@
 <div class='row'>
     {% for car in cars %}
     <div class='col-md-3'>
-        <h2><a href='/cars/{{ car._id }}'>{{ car.title }}</a></h2>
         <img src="{{ car.Image }}" style="width: 100% !important;" alt="">
-        <small>{{ car.Make }}</small><br>
-        <small>{{ car.Model }}</small><br>
-        <small>{{ car.Color }}</small><br>
-        <small>{{ car.Price }}</small><br>
-        <small>{{ car.Description }}</small><br>
+        <div class="container">
+    <div class="row buttons smallIndent">
+            <h2><a href='/cars/purchase{{ car._id }}'><button class="btn btn-primary">Purchase{{ Buy }}</button></a></h2>
+            <h2 class="col-xs-1"><a href='/cars/{{ car._id }}'><button class="btn btn-danger">Edit{{ edit }}</button></a></h2>
+    </div>
+        </div>
+        <p class="smallIndent">{{ car.Make }}</p>
+        <p class="smallIndent">{{ car.Model }}</p>
+        <p class="smallIndent">{{ car.Color }}</p>
+        <p class="smallIndent">{{ car.Price }}</p>
+        <p class="smallIndent">{{ car.Description }}</p>
     </div>
     {% endfor %}
 </div>  
