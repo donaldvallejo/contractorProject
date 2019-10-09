@@ -5,14 +5,14 @@
 <div class='row'>
     {% for car in cars %}
     <div class='col-md-3'>
-            <h2><a href='/cars/{{ car._id }}'>{{ car.title }}</a></h2>
-            <img src="{{ car.Image }}" style="width: 100% !important;" alt="">
-            <small>{{ car.Make }}</small><br>
-            <small>{{ car.Model }}</small><br>
-            <small>{{ car.Color }}</small><br>
-            <small>{{ car.Price }}</small><br>
-            <small>{{ car.Description }}</small><br>
-        </div>
+        <h2><a href='/cars/{{ car._id }}'>{{ car.title }}</a></h2>
+        <img src="{{ car.Image }}" style="width: 100% !important;" alt="">
+        <small>{{ car.Make }}</small><br>
+        <small>{{ car.Model }}</small><br>
+        <small>{{ car.Color }}</small><br>
+        <small>{{ car.Price }}</small><br>
+        <small>{{ car.Description }}</small><br>
+    </div>
     {% endfor %}
 </div>  
 {% endblock %} 
