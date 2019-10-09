@@ -87,7 +87,7 @@ def cars_update(car_id):
   return redirect(url_for('cars_show', car_id=car_id))
 
 @app.route('/cars/<car_id>/delete', methods=['POST'])
-def cars_delete(playlist_id):
+def cars_delete(car_id):
     """Delete one car."""
     cars.delete_one({'_id': ObjectId(car_id)})
     return redirect(url_for('cars_index'))

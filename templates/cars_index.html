@@ -7,9 +7,12 @@
     <div class='col-md-3'>
         <img src="{{ car.Image }}" style="width: 100% !important;" alt="">
         <div class="container">
-    <div class="row buttons smallIndent">
-            <h2><a href='/cars/{{ car._id }}'><button class="btn btn-primary">Purchase{{ Buy }}</button></a></h2>
-            <h2 class="col-xs-1"><a href='/cars/{{ car._id }}/edit'><button class="btn btn-danger">Edit{{ edit }}</button></a></h2>
+    <div class="row">
+        <h2 class="col-sm-3"><a href='/cars/purchase{{ car._id }}'><button class="btn btn-success">Purchase{{ purchase }}</button></a></h2>
+        <h2 class="col-sm-3"><a href='/cars/{{ car._id }}'><button class="btn btn-primary">Comment{{ comment }}</button></a></h2>
+        <h2 class="col-sm-3"><a href='/cars/{{ car._id }}/edit'><button class="btn btn-warning">Edit{{ edit }}</button></a></h2>
+        <h2 class="col-sm-3"><form method="POST" action="/cars/{{ car._id }}/delete"><button type="submit" class="btn btn-danger">Delete{{ delete }}<button></form></h2>
+
     </div>
         </div>
             <div class="row offset-md-1 centered">
@@ -26,3 +29,4 @@
     {% endfor %}
 </div>  
 {% endblock %} 
+
