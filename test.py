@@ -18,23 +18,21 @@ sample_form_data = {
     'Description': sample_car['Description'],
     'Color': sample_car['Color'],
     'Price': sample_car['Price']
-
-    # 'videos': '\n'.join(sample_car['videos'])
 }
 
-class PlaylistsTests(TestCase):
+class carsTests(TestCase):
     def setUp(self):
         self.client = app.test_client()
         app.config['TESTING'] = True
 
 def test_index(self):
-        """Test the playlists homepage."""
+        """Test the cars homepage."""
         result = self.client.get('/')
         self.assertEqual(result.status, '200 OK')
         self.assertIn(b'car', result.data)
     
 def test_new(self):
-        """Test the new playlist creation page."""
+        """Test the new car creation page."""
         result = self.client.get('/cars/new')
         self.assertEqual(result.status, '200 OK')
         self.assertIn(b'New car', result.data)
